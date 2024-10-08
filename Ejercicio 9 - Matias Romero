@@ -1,0 +1,35 @@
+def main():
+    dimension = int(input())
+    while dimension != 0:
+        # Llamo a las funciones
+        matriz = crear_matriz_desde_vectores(dimension)
+        es_identidad = verificar_identidad(matriz, dimension)
+
+        # Verifico si es identidad o no
+        if es_identidad:
+            print('SI')
+        else:
+            print('NO')
+
+        dimension = int(input())
+
+def crear_matriz_desde_vectores(dimension):
+    matriz = []
+    for i in range(dimension):
+        filas = list(map(int, input().split()))  # Convierte la fila en una lista de enteros
+        matriz.append(filas)
+
+    return matriz
+
+def verificar_identidad(matriz, dim):
+    for i in range(dim):
+        for j in range(dim):
+            if i == j:
+                if matriz[i][j] != 1:
+                    return False
+            else:
+                if matriz[i][j] != 0:
+                    return False
+    return True
+
+main()
